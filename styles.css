@@ -1,10 +1,54 @@
+* {
+  box-sizing: border-box;
+  font-family: "Itim", cursive;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  border-bottom: 1px solid black;
+  padding-bottom: 35px;
+}
+
+.poke-logo {
+  max-width: 200px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.comparison {
+  display: flex;
+}
+
+.comparison .results {
+  margin: 0 auto;
+}
+
+.pokemon-selector {
+  text-align: center;
+}
+
 .pokemon-selector img {
   display: block;
+  margin: 0 auto;
 }
 
 .pokemon-selector ul {
   list-style-type: none;
   padding: 0;
+}
+
+select {
+  font-size: 24px;
+  padding: 5px;
 }
 
 .type {

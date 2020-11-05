@@ -1,6 +1,8 @@
 // Initilization
 let firstPokeSelect = document.querySelector(".first .all-pokemon");
 let secondPokeSelect = document.querySelector(".second .all-pokemon");
+let typeArray1 = [];
+let typeArray2 = [];
 
 // Functions
 const getAllPokemon = (selector) => {
@@ -18,7 +20,7 @@ const getAllPokemon = (selector) => {
       let option = document.createElement("option");
       option.innerText = pokeName;
 
-      document.querySelector(selector + " .all-pokemon").appendChild(option);
+      document.querySelector(`.${selector} .all-pokemon`).appendChild(option);
     });
   });
 
@@ -36,52 +38,45 @@ const pokeDisplay = (selector, value) => {
 
     // Get and display sprite
     let pokeImgURL = json.sprites.front_default;
-    document.querySelector(selector + " .poke-img").src = pokeImgURL;
+    document.querySelector(`.${selector} .poke-img`).src = pokeImgURL;
 
     // get and display typing
     let pokeTypes = json.types;
-    document.querySelector(selector + " .types").innerHTML = "";
+    document.querySelector(`.${selector} .types`).innerHTML = "";
+    typeArray1 = [];
+    typeArray2 = [];
     pokeTypes.forEach(function(types) {
       let type = types.type.name;
+      if (selector === "first") {
+        typeArray1.push(type);
+      } else {
+        typeArray2.push(type);
+      }
       let li = document.createElement("li");
       li.innerText = type;
       li.className = "type " + type;
-      document.querySelector(selector + " .types").appendChild(li);
+      document.querySelector(`.${selector} .types`).appendChild(li);
     });
   });
 }
 
 const compareTypes = () => {
-  let poke1TypesArray = [];
-  let poke2TypesArray = [];
-
-  let poke1Types = document.querySelector(".first .types").childNodes;
-  poke1Types.forEach(function(type) {
-    poke1TypesArray.push(type.innerText);
-  });
-
-  let poke2Types = document.querySelector(".second .types").childNodes;
-  poke2Types.forEach(function(type) {
-    poke2TypesArray.push(type.innerText);
-  });
-
-  console.log(poke1TypesArray);
-  console.log(poke2TypesArray);
+  console.log(typeArray1, typeArray2)
 }
 
 // Usage
-getAllPokemon(".first");
-getAllPokemon(".second");
+getAllPokemon("first");
+getAllPokemon("second");
 
 firstPokeSelect.addEventListener("change", function() {
   let val = firstPokeSelect.value;
-  pokeDisplay(".first", val);
-  setTimeout(function(){ compareTypes(); }, 1000);
+  pokeDisplay("first", val);
+  compareTypes();
 });
 
 secondPokeSelect.addEventListener("change", function() {
   let val = secondPokeSelect.value;
-  pokeDisplay(".second", val);
-  setTimeout(function(){ compareTypes(); }, 1000);
+  pokeDisplay("second", val);
+  compareTypes();
 });
 

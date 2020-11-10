@@ -168,39 +168,6 @@ const compareTypes = () => {
         }
       });
     }
-
-    
-
-      // data1.then(function(json) {
-      //   let damageRelations1 = json.damage_relations;
-     
-      //   for (let j = 0; j < typesArray2.length; j++) {
-      //     let type2 = "https://pokeapi.co/api/v2/type/" + typesArray2[j];
-          
-      //     let prom2 = fetch(type2);        
-      //     let data2 = prom2.then(function(res) {
-      //       return res.json();
-      //     });
-
-      //     data2.then(function(json) {
-      //       let damageRelations2 = json.damage_relations;
-      //       console.log(damageRelations1, damageRelations2);
-
-      //       // Double damage count
-      //       let doubleDamage1 = damageRelations1.double_damage_from;
-      //       for (let k = 0; k < doubleDamage1.length; k++) {
-      //         if (typesArray2[j] === doubleDamage1[k].name) {
-      //           effectivnessScore-=2;
-      //         }
-      //       }
-
-      //       console.log(effectivnessScore);
-      //     });
-
-      //   }
-      // });
-    //}
-
     
   }, 1000);
 }
@@ -220,4 +187,7 @@ secondPokeSelect.addEventListener("change", function() {
   pokeDisplay(".second", this.value);
   compareTypes();
 });
+
+// Future improvements
+  // Take into account type cancellation to avoid weird results and more accurate comparisons
 

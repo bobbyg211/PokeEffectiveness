@@ -30,6 +30,11 @@ h1 {
 
 .comparison .results {
   margin: 0 auto;
+  text-align: center;
+}
+
+.comparison .results h2 {
+  font-size: 50px;
 }
 
 .pokemon-selector {
